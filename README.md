@@ -41,3 +41,10 @@
   - **10000 => 0**
   - **-5000 => +5000**
   - **Bank +5000**
+
+
+MSSQL - Server Name - > select - new query- Select @@servername 
+If login password change , security - login - sa (select)- change password
+Breakpoint - F9
+Line by line - F10
+Start with Debugging - F5
