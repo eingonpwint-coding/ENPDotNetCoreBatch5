@@ -170,5 +170,29 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             Console.ReadKey();
 
         }
+
+        public void Delete()
+        {
+            Console.WriteLine("Enter Id :");
+            string id = Console.ReadLine();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string query = @"UPDATE [dbo].[Tbl_Blog]
+                           SET [DeleteFlag] = 1
+                         WHERE BlogId = @BlogId;";
+
+            SqlCommand cmd2 = new SqlCommand(query, connection);
+            cmd2.Parameters.AddWithValue("@BlogId", id);
+
+            int result = cmd2.ExecuteNonQuery();
+
+            connection.Close();
+
+            Console.WriteLine(result == 1 ? "Deleting successful" : "Deleting failed");
+            Console.ReadKey();
+
+        }
     }
 }
