@@ -48,3 +48,5 @@ If login password change , security - login - sa (select)- change password
 Breakpoint - F9
 Line by line - F10
 Start with Debugging - F5
+
+SqlClient -> package (System.Data.SqlClient)
