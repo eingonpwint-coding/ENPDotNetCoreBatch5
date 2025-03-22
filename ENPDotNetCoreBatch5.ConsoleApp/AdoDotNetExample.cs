@@ -53,5 +53,46 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             //Console.ReadKey();
         }
 
+        public void Create()
+        {
+            Console.WriteLine("Enter BlogTitle");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Enter BlogAuthor");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Enter BlogContent");
+            string content = Console.ReadLine();
+
+
+
+            SqlConnection connection2 = new SqlConnection(_connectionString);
+            connection2.Open();
+            //if can use $@"INSERT INTO [dbo].[Tbl_Blog]([BlogTitle], [BlogAuthor], [BlogContent], [DeleteFlag]) VALUES ('{BlogTitle}', '{BlogAuthor}', '{BlogContent}', 0)";
+            //To avoid sql Injection, use @ is better.
+            string query2 = @"
+                    INSERT INTO [dbo].[Tbl_Blog]
+                               ([BlogTitle]
+                               ,[BlogAuthor]
+                               ,[BlogContent]
+                               ,[DeleteFlag])
+                         VALUES
+                               (@BlogTitle
+                               ,@BlogAuthor
+                               ,@BlogContent
+                               ,0)";
+            SqlCommand cmd2 = new SqlCommand(query2, connection2);
+
+            cmd2.Parameters.AddWithValue("@BlogTitle", title);
+            cmd2.Parameters.AddWithValue("@BlogAuthor", author);
+            cmd2.Parameters.AddWithValue("@BlogContent", content);
+
+            int result = cmd2.ExecuteNonQuery();
+
+            connection2.Close();
+
+            Console.WriteLine(result == 1 ? "Saving successful" : "Saving failed");
+            Console.ReadKey();
+        }
     }
 }
