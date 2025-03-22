@@ -94,5 +94,41 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             Console.WriteLine(result == 1 ? "Saving successful" : "Saving failed");
             Console.ReadKey();
         }
+
+        public void Edit()
+        {
+            Console.WriteLine("Enter Id :");
+            string id = Console.ReadLine();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string query = @"SELECT [BlogId]
+                          ,[BlogTitle]
+                          ,[BlogAuthor]
+                          ,[BlogContent]
+                          ,[DeleteFlag]
+                      FROM [dbo].[Tbl_Blog] where BlogId = @BlogId";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@BlogId", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+
+            connection.Close();
+
+            if (dt.Rows.Count == 0)
+            {
+                Console.WriteLine("No data found");
+                return;
+            }
+
+            DataRow dr = dt.Rows[0];
+            Console.WriteLine(dr["BlogId"]);
+            Console.WriteLine(dr["BlogTitle"]);
+            Console.WriteLine(dr["BlogAuthor"]);
+            Console.WriteLine(dr["BlogContent"]);
+        }
     }
 }
