@@ -130,5 +130,45 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             Console.WriteLine(dr["BlogAuthor"]);
             Console.WriteLine(dr["BlogContent"]);
         }
+
+        public void Update()
+        {
+            Console.WriteLine("Enter Id :");
+            string id = Console.ReadLine();
+
+            Console.WriteLine("Enter BlogTitle");
+            string title = Console.ReadLine();
+
+            Console.WriteLine("Enter BlogAuthor");
+            string author = Console.ReadLine();
+
+            Console.WriteLine("Enter BlogContent");
+            string content = Console.ReadLine();
+
+            SqlConnection connection = new SqlConnection(_connectionString);
+            connection.Open();
+
+            string query = @"
+                    UPDATE [dbo].[Tbl_Blog]
+                       SET [BlogTitle] = @BlogTitle
+                          ,[BlogAuthor] = @BlogAuthor
+                          ,[BlogContent] = @BlogContent
+                          ,[DeleteFlag] = 0
+                     WHERE BlogId = @BlogId";
+
+            SqlCommand cmd2 = new SqlCommand(query, connection);
+            cmd2.Parameters.AddWithValue("@BlogId", id);
+            cmd2.Parameters.AddWithValue("@BlogTitle", title);
+            cmd2.Parameters.AddWithValue("@BlogAuthor", author);
+            cmd2.Parameters.AddWithValue("@BlogContent", content);
+
+            int result = cmd2.ExecuteNonQuery();
+
+            connection.Close();
+
+            Console.WriteLine(result == 1 ? "Updating successful" : "Updating failed");
+            Console.ReadKey();
+
+        }
     }
 }
