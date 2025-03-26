@@ -86,5 +86,29 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             }
         }
 
+        public void Update(int id, string title, string author, string content)
+        {
+            string query = @" UPDATE [dbo].[Tbl_Blog]
+                       SET [BlogTitle] = @BlogTitle
+                          ,[BlogAuthor] = @BlogAuthor
+                          ,[BlogContent] = @BlogContent
+                          ,[DeleteFlag] = 0
+                     WHERE BlogId = @BlogId;";
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.Execute(query, new BlogDataModel
+                {
+                    BlogId = id,
+                    BlogTitle = title,
+                    BlogAuthor = author,
+                    BlogContent = content
+                });
+
+                Console.WriteLine(result == 1 ? "Updating Successful" : "Updating Failed");
+            }
+        }
+
     }
 }
