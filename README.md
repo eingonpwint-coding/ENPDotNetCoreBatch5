@@ -50,3 +50,11 @@ Line by line - F10
 Start with Debugging - F5
 
 SqlClient -> package (System.Data.SqlClient)
+
+DataSet>DataTable>DataRow>DataColumn
+
+//Dapper (crud)
+dapper install
+dynamic -> don't have exactly data type 
+Query(select)
+Execute(create, update,delete)
