@@ -118,6 +118,13 @@ Console.WriteLine("Hello, World!");
 //Console.WriteLine(result == 1 ? "Saving successful" : "Saving failed");
 
 
-AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
-adoDotNetExample.Read();
+//AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
+//adoDotNetExample.Read();
+
+DapperExample dapperExample = new DapperExample();
+//dapperExample.Read();
+//dapperExample.Create("testing", "testing", "testing");
+//dapperExample.Edit(1);
+//dapperExample.Update(1, "change", "change", "change");
+dapperExample.Delete(1);
 Console.ReadKey();
