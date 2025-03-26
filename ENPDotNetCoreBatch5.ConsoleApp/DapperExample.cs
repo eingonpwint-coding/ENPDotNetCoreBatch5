@@ -42,6 +42,32 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             }
         }
 
-        
+        public void Create(string title, string author, string content)
+        {
+            string query = @"INSERT INTO [dbo].[Tbl_Blog]
+                               ([BlogTitle]
+                               ,[BlogAuthor]
+                               ,[BlogContent]
+                               ,[DeleteFlag])
+                         VALUES
+                               (@BlogTitle
+                               ,@BlogAuthor
+                               ,@BlogContent
+                               ,0)";
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.Execute(query, new BlogDataModel
+                {
+                    BlogTitle = title,
+                    BlogAuthor = author,
+                    BlogContent = content
+                });
+
+                Console.WriteLine(result == 1 ? "Saving Successful" : "Saving Failed");
+            }
+        }
+
+
     }
 }
