@@ -110,5 +110,24 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             }
         }
 
+        public void Delete(int id)
+        {
+            string query = @"UPDATE [dbo].[Tbl_Blog]
+                           SET [DeleteFlag] = 1
+                         WHERE BlogId = @BlogId;";
+
+
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var result = db.Execute(query, new BlogDataModel
+                {
+                    BlogId = id,
+
+                });
+
+                Console.WriteLine(result == 1 ? "Deleting Successful" : "Deleting Failed");
+            }
+        }
+
     }
 }
