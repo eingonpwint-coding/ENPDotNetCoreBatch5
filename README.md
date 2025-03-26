@@ -53,8 +53,10 @@ SqlClient -> package (System.Data.SqlClient)
 
 DataSet>DataTable>DataRow>DataColumn
 
-//Dapper (crud)
-dapper install
-dynamic -> don't have exactly data type 
-Query(select)
-Execute(create, update,delete)
+### Dapper (crud)
+- ** dapper install
+- ** dynamic -> don't have exactly data type 
+- ** Query(select)
+- ** Execute(create, update,delete)
+
+### Entity framework
