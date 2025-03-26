@@ -126,5 +126,8 @@ DapperExample dapperExample = new DapperExample();
 //dapperExample.Create("testing", "testing", "testing");
 //dapperExample.Edit(1);
 //dapperExample.Update(1, "change", "change", "change");
-dapperExample.Delete(1);
+//dapperExample.Delete(1);
+
+EFCoreExample test = new EFCoreExample();
+test.Read();
 Console.ReadKey();
