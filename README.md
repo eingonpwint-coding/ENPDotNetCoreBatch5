@@ -54,25 +54,25 @@ SqlClient -> package (System.Data.SqlClient)
 DataSet>DataTable>DataRow>DataColumn
 
 ### Dapper (crud) need query
-- ** dapper install**
-- ** dynamic -> don't have exactly data type** 
-- ** Query(select)**
-- ** Execute(create, update,delete)**
+- dapper install
+- dynamic -> don't have exactly data type** 
+- Query(select)
+- Execute(create, update,delete)**
 
 ### Entity framework (CRUD)
-- ** Microsoft.EntityFrameworkCore(install)**
-- ** Microsoft.EntityFrameworkCore.SQLServer**
-- **Create DbContext class : DbContext**
+- Microsoft.EntityFrameworkCore(install)**
+- Microsoft.EntityFrameworkCore.SQLServer**
+- Create DbContext class : DbContext**
 
 ### AsNoTracking
-- ** select * from TBl_Blog with (nolock) **
-- ** commit data (1,2,3,4 (real data),5(not decided yet) <- uncomit data**
-- **insert into**
-- **update tbl_blog**
-- **1-mgmg 1**
-- **2-aung aung 2**
-- **3-ko ko 3-change 3 - ko ko 6 if use no tracking , when try select result old result ,not get realtime data**
-- **4-aye aye 4**
-- **5- myo myo 5**
-- **oracle don't have nolock (only pull commit data ) > need to insert commit line**
+-  select * from TBl_Blog with (nolock) 
+- commit data (1,2,3,4 (real data),5(not decided yet) <- uncomit data
+- insert into
+- update tbl_blog
+- 1-mgmg 1
+- 2-aung aung 2
+- 3-ko ko 3-change 3 - ko ko 6 if use no tracking , when try select result old result ,not get realtime data
+- 4-aye aye 4
+- 5- myo myo 5
+- oracle don't have nolock (only pull commit data ) > need to insert commit line
 -
