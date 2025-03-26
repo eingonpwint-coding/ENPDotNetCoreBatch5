@@ -55,14 +55,14 @@ DataSet>DataTable>DataRow>DataColumn
 
 ### Dapper (crud) need query
 - dapper install
-- dynamic -> don't have exactly data type** 
+- dynamic -> don't have exactly data type
 - Query(select)
-- Execute(create, update,delete)**
+- Execute(create, update,delete)
 
 ### Entity framework (CRUD)
-- Microsoft.EntityFrameworkCore(install)**
-- Microsoft.EntityFrameworkCore.SQLServer**
-- Create DbContext class : DbContext**
+- Microsoft.EntityFrameworkCore(install)
+- Microsoft.EntityFrameworkCore.SQLServer
+- Create DbContext class : DbContext
 
 ### AsNoTracking
 -  select * from TBl_Blog with (nolock) 
