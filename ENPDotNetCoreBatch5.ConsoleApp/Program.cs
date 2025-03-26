@@ -131,5 +131,7 @@ DapperExample dapperExample = new DapperExample();
 EFCoreExample test = new EFCoreExample();
 //test.Read();
 //test.Create("efcoretest", "efcoretest", "efcoretest");
-test.Edit(1);
+//test.Edit(1);
+//test.Update(2, "change test", "change test", "change test");
+test.Delete(12);
 Console.ReadKey();

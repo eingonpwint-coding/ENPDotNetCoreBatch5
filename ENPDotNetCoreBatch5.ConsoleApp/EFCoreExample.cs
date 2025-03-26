@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ENPDotNetCoreBatch5.ConsoleApp
 {
-    public  class EFCoreExample
+    public class EFCoreExample
     {
         public void Read()
         {
@@ -47,9 +47,9 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
 
             AppDbContext db = new AppDbContext();
             //db.Blogs.Where(x => x.BlogId == id).FirstOrDefault();
-            var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);    
+            var item = db.Blogs.FirstOrDefault(x => x.BlogId == id);
 
-            if(item is null)
+            if (item is null)
             {
                 Console.WriteLine("No data found");
                 return;
@@ -60,7 +60,60 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             Console.WriteLine(item.BlogContent);
 
         }
+
+        public void Update(int id, string title, string author, string content)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.AsNoTracking().FirstOrDefault(x => x.BlogId == id);
+
+            if (item is null)
+            {
+                Console.WriteLine("No data found");
+                return;
+            }
+            
+            if(!string.IsNullOrEmpty(title))
+            {
+                item.BlogTitle = title;
+            }
+            
+            if(!string.IsNullOrEmpty(author))
+            {
+                item.BlogAuthor = author;
+            }
+          
+            if(!string.IsNullOrEmpty(content))
+            {
+                item.BlogContent = content;
+            }
+            //because of AsnoTracking need to add below line
+            db.Entry(item).State = EntityState.Modified;
+            var result = db.SaveChanges();
+
+            Console.WriteLine(result == 1 ? "Updating Successful" : "Updating Failed");
+        }
+
+        public void Delete(int id)
+        {
+            AppDbContext db = new AppDbContext();
+            var item = db.Blogs.
+                AsNoTracking().
+                FirstOrDefault(x => x.BlogId == id);
+
+            if (item is null)
+            {
+                Console.WriteLine("No data found");
+                return;
+            }
+
+            db.Entry(item).State = EntityState.Deleted;
+            var result = db.SaveChanges();
+            Console.WriteLine(result == 1 ? "Deleting Successful" : "Deleting Failed");
+        }
     }
+}
 
     
-}
+
+
+
