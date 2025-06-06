@@ -19,7 +19,7 @@ namespace ENPDotNetCoreBatch5.ConsoleApp.Models
         public string BlogContent { get; set; }
 
         //public bool DeleteFlag { get; set; }
-        
+        //if you want to select all (mean int to string > press alter + left click pull + type value)
     }
     [Table ("Tbl_BLog")]
     public class BlogDataModel

@@ -42,6 +42,12 @@
   - **-5000 => +5000**
   - **Bank +5000**
 
+//if you want to select all (mean int to string > press alter + left click pull + type value)
+
+Ado.net => need install package => System.Data.SqlClient
+Multiline support = > " Ctrl+v -> Ctrl+Z -> add @ "
+
+DataSet -> DataTable -> DataRow -> Data Column
 
 MSSQL - Server Name - > select - new query- Select @@servername 
 If login password change , security - login - sa (select)- change password
@@ -75,4 +81,41 @@ DataSet>DataTable>DataRow>DataColumn
 - 4-aye aye 4
 - 5- myo myo 5
 - oracle don't have nolock (only pull commit data ) > need to insert commit line
--
+
+
+### Database version
+database -> click -> new query -> select @@version
+->select @@SERVERNAME
+
+class library -> produce dll->other can use dll
+create new project -> choose library-> rebuild-> project right click->
+Open folder in file exploder ->bin->debug->net7.0-> can find dll
+
+### Oracle Commands
+
+```sql
+
+-- Commit data
+INSERT INTO ...
+COMMIT
+
+-- Update data
+UPDATE tbl_blog
+COMMIT
+```
+
+## Entity Framework Core (EF Core)
+
+- **Database First** (Manual, Auto)
+- **Code First**
+
+** other version **
+dotnet tool install --global dotnet-ef 
+
+**dotnet version 7**
+dotnet tool install --global dotnet-ef --version 7
+
+```sh
+dotnet ef dbcontext scaffold "Server=.;Database=ENPDotNetBatch5;User Id=sa;Password=sasa@123;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -c AppDbContext -f
+```
+ENPDotNetBatch5

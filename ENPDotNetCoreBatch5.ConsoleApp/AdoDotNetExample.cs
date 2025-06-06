@@ -31,8 +31,21 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
                   ,[DeleteFlag]
               FROM [dbo].[Tbl_Blog] where [DeleteFlag] = 0";
 
-            //if use DataAdapter ,....
+            
             SqlCommand cmd = new SqlCommand(query, connection);
+
+            //if use DataReader,
+            //SqlDataReader reader = cmd.ExecuteReader();
+            //while (reader.Read())
+            //{
+            //    Console.WriteLine(reader["BlogId"]);
+            //    Console.WriteLine(reader["BlogTitle"]);
+            //    Console.WriteLine(reader["BlogAuthor"]);
+            //    Console.WriteLine(reader["BlogContent"]);
+            //}
+            //must have in connection
+
+            //if use DataAdapter ,....
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapter.Fill(dt); // fill = execute (in database)

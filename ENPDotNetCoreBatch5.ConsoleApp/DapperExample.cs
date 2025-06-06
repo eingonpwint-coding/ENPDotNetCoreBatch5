@@ -14,6 +14,8 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
 
         public void Read()
         {
+            // if use db.Query(query).ToList(), lst can be dynamic and item.wwwwww(everything can write) it cause error(runing time error)
+            //dynamic means no specific datatype
             //using(IDbConnection db = new SqlConnection(_connectionString))
             //{
             //    string query = "select * from dbl_Blog where DeleteFlag=0";
@@ -27,7 +29,7 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
             //        Console.WriteLine(item.BlogContent);
             //    }
             //}
-
+            //Dto > Data transfer object
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
                 string query = "select * from tbl_Blog where DeleteFlag=0";
