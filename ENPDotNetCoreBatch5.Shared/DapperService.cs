@@ -25,6 +25,7 @@ namespace ENPDotNetCoreBatch5.Shared
             return lst;
         }
 
+        //Go to definition
         public T QueryFirstOrDefault<T>(string query, object? param = null)
         {
             using IDbConnection db = new SqlConnection(_connectionString);
