@@ -123,3 +123,5 @@ ENPDotNetBatch5
 .net core
 .net 
 dll = dynamic link library
+
+Package => Newtonsoft.json (C<=>json)

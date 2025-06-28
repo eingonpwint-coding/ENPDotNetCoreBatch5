@@ -1,7 +1,3 @@
-using ENPDotNetCoreBatch5.Database.Models;
-using ENPDotNetCoreBatch5.MinimalApi.Endpoints.Blog;
-using Microsoft.EntityFrameworkCore;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
