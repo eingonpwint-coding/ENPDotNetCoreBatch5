@@ -24,20 +24,20 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+//app.MapGet("/weatherforecast", () =>
+//{
+//    var forecast = Enumerable.Range(1, 5).Select(index =>
+//        new WeatherForecast
+//        (
+//            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+//            Random.Shared.Next(-20, 55),
+//            summaries[Random.Shared.Next(summaries.Length)]
+//        ))
+//        .ToArray();
+//    return forecast;
+//})
+//.WithName("GetWeatherForecast")
+//.WithOpenApi();
 
 app.MapGet("/birds", () =>
 {
@@ -87,10 +87,59 @@ app.MapPost("/birds", (BirdModel requestModel) =>
 .WithOpenApi();
 
 
+app.MapPut("/birds/{id}", (int id,BirdModel requestModel) =>
+{
+    string folderPath = "Data/Birds.json";
+    var jsonStr = File.ReadAllText(folderPath);
+    var result = JsonConvert.DeserializeObject<BirdResponseModel>(jsonStr)!;// Deserialize => json to C#
+
+    var item = result.Tbl_Bird.FirstOrDefault(x => x.Id == id);
+    if (item is null)
+    {
+        return Results.BadRequest("no data found");
+
+    }
+
+    item.BirdEnglishName = requestModel.BirdEnglishName;
+    item.BirdMyanmarName = requestModel.BirdMyanmarName;
+    item.Description = requestModel.Description;
+    item.ImagePath = requestModel.ImagePath;
+
+    var jsonStrToWrite = JsonConvert.SerializeObject(result);
+    File.WriteAllText(folderPath, jsonStrToWrite);
+
+
+    return Results.Ok(requestModel);
+})
+.WithName("UpdateBird")
+.WithOpenApi();
+
+app.MapDelete("/birds/{id}", (int id) =>
+{
+    string folderPath = "Data/Birds.json";
+    var jsonStr = File.ReadAllText(folderPath);
+    var result = JsonConvert.DeserializeObject<BirdResponseModel>(jsonStr)!;// Deserialize => json to C#
+
+    var item = result.Tbl_Bird.FirstOrDefault(x => x.Id == id);
+    if (item is null)
+    {
+        return Results.BadRequest("no data found");
+
+    }
+   
+    result.Tbl_Bird.Remove(item);
+
+    var jsonStrToWrite = JsonConvert.SerializeObject(result);
+    File.WriteAllText(folderPath, jsonStrToWrite);
+
+
+    return Results.Ok(item);
+})
+.WithName("DeleteBird")
+.WithOpenApi();
+
+
 app.Run();
-
-
-
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
