@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ENPDotNetCoreBatch5.Database\ENPDotNetCoreBatch5.Database.csproj" />
+    <ProjectReference Include="..\ENPDotNetCoreBatch5.Domain\ENPDotNetCoreBatch5.Domain.csproj" />
   </ItemGroup>
 
 </Project>
