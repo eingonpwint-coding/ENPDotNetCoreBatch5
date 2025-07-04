@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace ENPDotNetCoreBatch5.Domain.Features.Blog
 {
+    //Business logic +  DataAccess
     public class BlogService
     {
         private readonly AppDbContext _db = new AppDbContext();
