@@ -125,3 +125,8 @@ ENPDotNetBatch5
 dll = dynamic link library
 
 Package => Newtonsoft.json (C<=>json)
+
+Refit (install)
+Solution -Right click -> Configure start up Project 
+
+if u need to know print for sql script, refer to refit video
