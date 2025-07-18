@@ -132,3 +132,7 @@ Solution -Right click -> Configure start up Project
 if u need to know print for sql script, refer to refit video
 
 if u use dependency injection in console, install microsoft.extensions.dependency injection
+
+Minimal api (only method dependency injection
+
+RestApi (both method and constructor dependency injection)
