@@ -11,14 +11,23 @@ namespace ENPDotNetCoreBatch5.RestApi.Controllers
     [ApiController]
     public class BlogAdoNetController : ControllerBase
     {
-        private readonly string _connectionString = "Data Source=.;Initial Catalog=ENPDotNetBatch5;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
+        //add dependency injection for connection string
+
+        //private readonly string _connectionString = "Data Source=.;Initial Catalog=ENPDotNetBatch5;User ID=sa;Password=sasa@123;TrustServerCertificate=True;";
+
+        private readonly string _connectionString;
+
+        public BlogAdoNetController(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DbConnection")!;
+        }
 
         [HttpGet]
         public IActionResult GetBlogs()
         {
             List<BlogViewModel> blogs = new List<BlogViewModel>();
             SqlConnection conn = new SqlConnection(_connectionString);
-            conn.Open();
+            conn.Open();  
             string query = @"SELECT [BlogId]
                           ,[BlogTitle]
                           ,[BlogAuthor]

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data;
@@ -12,58 +12,63 @@ namespace ENPDotNetCoreBatch5.ConsoleApp
 {
     public class AdoDotNetExample
     {
-        private readonly string _connectionString = "Data Source=.;Initial Catalog=ENPDotNetBatch5;User ID=sa;Password=sasa@123;";
+        private readonly string _connectionString = AppSettings.ConnectionString;
+
         public void Read()
         {
-            
-            Console.WriteLine("connectionString" + _connectionString);
-
+            Console.WriteLine("Connection string: " + _connectionString);
             SqlConnection connection = new SqlConnection(_connectionString);
 
-            Console.WriteLine("Connection opening ......");
+            Console.WriteLine("Connection opening...");
             connection.Open();
-            Console.WriteLine("Connection opened ......");
+            Console.WriteLine("Connection opened.");
 
             string query = @"SELECT [BlogId]
-                  ,[BlogTitle]
-                  ,[BlogAuthor]
-                  ,[BlogContent]
-                  ,[DeleteFlag]
-              FROM [dbo].[Tbl_Blog] where [DeleteFlag] = 0";
-
-            
+      ,[BlogTitle]
+      ,[BlogAuthor]
+      ,[BlogContent]
+      ,[DeleteFlag]
+  FROM [dbo].[Tbl_Blog] where DeleteFlag = 0";
             SqlCommand cmd = new SqlCommand(query, connection);
-
-            //if use DataReader,
-            //SqlDataReader reader = cmd.ExecuteReader();
-            //while (reader.Read())
-            //{
-            //    Console.WriteLine(reader["BlogId"]);
-            //    Console.WriteLine(reader["BlogTitle"]);
-            //    Console.WriteLine(reader["BlogAuthor"]);
-            //    Console.WriteLine(reader["BlogContent"]);
-            //}
-            //must have in connection
-
-            //if use DataAdapter ,....
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt); // fill = execute (in database)
-
-            Console.WriteLine("Connection closing ......");
-
-            connection.Close();
-            foreach (DataRow dr in dt.Rows)
+            //SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //adapter.Fill(dt);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
             {
-                Console.WriteLine(dr["BlogId"]);
-                Console.WriteLine(dr["BlogTitle"]);
-                Console.WriteLine(dr["BlogAuthor"]);
-                Console.WriteLine(dr["BlogContent"]);
+                Console.WriteLine(reader["BlogId"]);
+                Console.WriteLine(reader["BlogTitle"]);
+                Console.WriteLine(reader["BlogAuthor"]);
+                Console.WriteLine(reader["BlogContent"]);
                 //Console.WriteLine(dr["DeleteFlag"]);
             }
 
-            Console.WriteLine("Connection closed ......");
-            //Console.ReadKey();
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    Console.WriteLine(dr["BlogId"]);
+            //    Console.WriteLine(dr["BlogTitle"]);
+            //    Console.WriteLine(dr["BlogAuthor"]);
+            //    Console.WriteLine(dr["BlogContent"]);
+            //    //Console.WriteLine(dr["DeleteFlag"]);
+            //}
+
+            Console.WriteLine("Connection closing...");
+            connection.Close();
+            Console.WriteLine("Connection closed.");
+
+            // DataSet
+            // DataTable
+            // DataRow
+            // DataColumn
+
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    Console.WriteLine(dr["BlogId"]);
+            //    Console.WriteLine(dr["BlogTitle"]);
+            //    Console.WriteLine(dr["BlogAuthor"]);
+            //    Console.WriteLine(dr["BlogContent"]);
+            //    //Console.WriteLine(dr["DeleteFlag"]);
+            //}
         }
 
         public void Create()

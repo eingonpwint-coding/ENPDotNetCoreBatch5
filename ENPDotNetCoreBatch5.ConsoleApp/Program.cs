@@ -1,4 +1,5 @@
 ﻿using ENPDotNetCoreBatch5.ConsoleApp;
+using Microsoft.Extensions.DependencyInjection;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -133,5 +134,13 @@ EFCoreExample test = new EFCoreExample();
 //test.Create("efcoretest", "efcoretest", "efcoretest");
 //test.Edit(1);
 //test.Update(2, "change test", "change test", "change test");
-test.Delete(12);
+//.Delete(12);
+
+var services = new ServiceCollection()
+    .AddSingleton<AdoDotNetExample>()
+    .BuildServiceProvider();
+
+var adoDotNetExample = services.GetRequiredService<AdoDotNetExample>();
+adoDotNetExample.Read();
+
 Console.ReadKey();

@@ -13,10 +13,12 @@ namespace ENPDotNetCoreBatch5.RestApi.Controllers
     public class BlogServiceController : ControllerBase
     {
         private readonly BlogService _service;
-        public BlogServiceController()
+
+        public BlogServiceController(BlogService service)
         {
-            _service = new BlogService();
+            _service = service;
         }
+
         [HttpGet]
         public IActionResult GetBLogs()
         {
