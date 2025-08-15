@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENPDotNetCoreBatch5.Restapi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENPDotNetCoreBatch5.RestApi3", "ENPDotNetCoreBatch5.RestApi3\ENPDotNetCoreBatch5.RestApi3.csproj", "{F69EBC2B-3132-4DCF-960C-47B8EF6DE535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENPDotNetCoreBatch5.MvcApp", "ENPDotNetCoreBatch5.MvcApp\ENPDotNetCoreBatch5.MvcApp.csproj", "{D1F64F41-954A-4B8B-892A-B7B12E333957}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ENPDotNetCoreBatch5.MvcApp", "ENPDotNetCoreBatch5.MvcApp\ENPDotNetCoreBatch5.MvcApp.csproj", "{D1F64F41-954A-4B8B-892A-B7B12E333957}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENPDotNetCoreBatch5.ChartWebApp", "ENPDotNetCoreBatch5.ChartWebApp\ENPDotNetCoreBatch5.ChartWebApp.csproj", "{02EE3D39-43C4-4DD7-843C-08A01FF7195D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +80,10 @@ Global
 		{D1F64F41-954A-4B8B-892A-B7B12E333957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F64F41-954A-4B8B-892A-B7B12E333957}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F64F41-954A-4B8B-892A-B7B12E333957}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02EE3D39-43C4-4DD7-843C-08A01FF7195D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02EE3D39-43C4-4DD7-843C-08A01FF7195D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02EE3D39-43C4-4DD7-843C-08A01FF7195D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02EE3D39-43C4-4DD7-843C-08A01FF7195D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
